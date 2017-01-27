@@ -84,7 +84,6 @@ export function checkDiagonalRight(board, piece) {
   let count = 0
 
   for (var i = 0; i < n; i++) {
-    console.log(board[i][column], column, i, count)
     if (board[i][column] === piece) {
       count++
     }

@@ -13,17 +13,32 @@ export function giveNewBoard (req, res) {
   }
 
 export function calculateBoard (req, res) {
-  let win = false
-
+  const piece = rules[game.currentPlayer]
   const game = {
     currentPlayer: 'player1',
-    board: [['x', 'x', 'x'],['x', 'x', 'o'],['x', 'x', 'x']],
+    board: [['x', 'x', 'x'],['d', ' ', 'o'],['x', 'x', 'x']],
     winner: null
   };
 
-  const piece = rules[game.currentPlayer]
+  let win = false
 
-  //if (gameOver(game.board)) res.status(200).send(makeBoard())
+  if (gameOver(game.board)) res.status(200).send(makeBoard())
 
-  console.log(checkDiagonalRight(game.board, piece))
+  if (
+    !checkRows(game.board, piece) ||
+    !checkColumns(game.board, piece) ||
+    !checkDiagonalLeft(game.board, piece) ||
+    !checkDiagonalRight(game.board, piece)
+  ) {
+    if (game.currentPlayer === 'player1') {
+      game.currentPlayer = 'player2'
+    } else {
+      game.currentPlayer = 'player1'
+    }
+
+    res.status(200).send(game)
+  } else {
+    game.winner = game.currentPlayer
+    res.status(200).send(game)
+  }
 }
