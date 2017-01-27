@@ -1,13 +1,13 @@
-var path = require('path');
-var webpack = require('webpack');
-var express = require('express');
-var config = require('../webpack.config');
+import path from 'path'
+import webpack from 'webpack'
+import express from 'express'
+import config from '../webpack.config'
 import router from './routes'
 
-var app = express();
+const app = express();
 app.set('port', process.env.PORT || 3000);
 router(app)
-var compiler = webpack(config);
+const compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath

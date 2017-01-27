@@ -7,7 +7,7 @@ import {
 export default function routes(app) {
 
   app.route('/api/getboard')
-    .get(calculateBoard)
+    .get(giveNewBoard)
     .put(calculateBoard);
 
 }

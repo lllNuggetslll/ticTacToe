@@ -2,7 +2,8 @@ export function makeBoard (n = 3) {
   const newGame = {
     currentPlayer: 'player1',
     board: [],
-    winner: null
+    piece: 'x',
+    winner: false
   };
 
   for (var i = 0; i < n; i++) {
@@ -96,8 +97,10 @@ export function checkDiagonalRight (board, piece) {
 export function changePlayer (game) {
   if (game.currentPlayer === 'player1') {
     game.currentPlayer = 'player2'
+    game.piece = 'o'
   } else {
     game.currentPlayer = 'player1'
+    game.piece = 'x'
   }
 
   return game

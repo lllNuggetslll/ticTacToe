@@ -10,6 +10,7 @@ import {
 } from './utils'
 
 export function giveNewBoard (req, res) {
+    // const n = req.params.n
     res.status(200).send(makeBoard())
   }
 
@@ -18,23 +19,21 @@ export function calculateBoard (req, res) {
   const game = {
     currentPlayer: 'player1',
     board: [['x', 'x', 'x'],['d', ' ', 'o'],['x', 'x', 'x']],
-    winner: null
+    piece: 'x',
+    winner: false
   };
-
-  let win = false
 
   if (gameOver(game.board)) res.status(200).send(makeBoard())
 
   if (
-    !checkRows(game.board, piece) ||
-    !checkColumns(game.board, piece) ||
-    !checkDiagonalLeft(game.board, piece) ||
-    !checkDiagonalRight(game.board, piece)
+    checkRows(game.board, piece) ||
+    checkColumns(game.board, piece) ||
+    checkDiagonalLeft(game.board, piece) ||
+    checkDiagonalRight(game.board, piece)
   ) {
-    
     res.status(200).send(changePlayer(game))
   } else {
-    game.winner = game.currentPlayer
+    game.winner = true
     res.status(200).send(game)
   }
 }
