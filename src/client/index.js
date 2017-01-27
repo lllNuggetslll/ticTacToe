@@ -27,9 +27,9 @@ const store = createStore(reducers, applyMiddleware(
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={Dash}/>
+      {/* <Route path="/" component={Dash}/>
       <Route path="/user" component={User}/>
-      <Route path="/widget" component={Widget}/>
+      <Route path="/widget" component={Widget}/> */}
     </Router>
   </Provider>,
   document.getElementById('root')

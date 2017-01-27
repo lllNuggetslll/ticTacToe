@@ -1,9 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
 var express = require('express');
-var config = require('./webpack.config');
+var config = require('../webpack.config');
+import router from './routes'
 
 var app = express();
+app.set('port', process.env.PORT || 3000);
+router(app)
 var compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -13,10 +16,10 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'src/client/static/index.html'));
+  res.sendFile(path.join(__dirname, '../src/client/static/index.html'));
 });
 
-app.listen(3000, function(err) {
+app.listen(app.get('port'), function(err) {
   if (err) {
     return console.error(err);
   }
