@@ -5,7 +5,8 @@ import {
   checkRows,
   checkColumns,
   checkDiagonalLeft,
-  checkDiagonalRight
+  checkDiagonalRight,
+  changePlayer
 } from './utils'
 
 export function giveNewBoard (req, res) {
@@ -30,13 +31,8 @@ export function calculateBoard (req, res) {
     !checkDiagonalLeft(game.board, piece) ||
     !checkDiagonalRight(game.board, piece)
   ) {
-    if (game.currentPlayer === 'player1') {
-      game.currentPlayer = 'player2'
-    } else {
-      game.currentPlayer = 'player1'
-    }
-
-    res.status(200).send(game)
+    
+    res.status(200).send(changePlayer(game))
   } else {
     game.winner = game.currentPlayer
     res.status(200).send(game)

@@ -78,7 +78,7 @@ export function checkDiagonalLeft(board, piece) {
   return count === n ? true : false
 }
 
-export function checkDiagonalRight(board, piece) {
+export function checkDiagonalRight (board, piece) {
   const n = board.length
   let column = n - 1
   let count = 0
@@ -91,4 +91,14 @@ export function checkDiagonalRight(board, piece) {
   }
 
   return count === n ? true : false
+}
+
+export function changePlayer (game) {
+  if (game.currentPlayer === 'player1') {
+    game.currentPlayer = 'player2'
+  } else {
+    game.currentPlayer = 'player1'
+  }
+
+  return game
 }
