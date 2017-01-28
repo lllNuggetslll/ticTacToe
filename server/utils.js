@@ -11,7 +11,7 @@ export function makeBoard (n = 3) {
     newGame.board.push(newRow)
 
     for(var j = 0; j < n; j++) {
-      newGame.board[i].push(' ')
+      newGame.board[i].push('?')
     }
   }
 
@@ -23,7 +23,7 @@ export function gameOver(board) {
 
   for (var i = 0; i < n; i++) {
     for (var j = 0; j < n; j++) {
-      if (board[i][j] === ' ') {
+      if (board[i][j] === '?') {
         return false
       }
     }
@@ -43,7 +43,11 @@ export function checkRows(board, piece) {
       }
     }
 
-    count === n ? true : count = 0
+    if (count === n) {
+      return true
+    } else {
+      count = 0
+    }
   }
 
   return false
@@ -60,7 +64,11 @@ export function checkColumns(board, piece) {
       }
     }
 
-    count === n ? true : count = 0
+    if (count === n) {
+      return true
+    } else {
+      count = 0
+    }
   }
 
   return false
