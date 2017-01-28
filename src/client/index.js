@@ -12,7 +12,7 @@ import './app/styles/font-awesome/css/font-awesome.min.css'
 import './app/styles/rdash-ui/dist/css/rdash.min.css'
 
 // Containers
-import Board from './app/board/board'
+import Board from './app/board/boardIndex'
 
 import reducers from './app/combinedReducers/combinedReducers'
 

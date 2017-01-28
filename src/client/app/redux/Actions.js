@@ -4,6 +4,7 @@ const ROOT_URL = 'http://localhost:3000/'
 
 export const GET_NEW_BOARD = 'GET_NEW_BOARD'
 export const SEND_BOARD = 'SEND_BOARD'
+export const PLACE_PIECE = 'PLACE_PIECE'
 
 export function getNewBoard() {
   const request = axios.get(`${ROOT_URL}api/getboard`)
@@ -23,6 +24,9 @@ export function sendBoard(board) {
   }
 }
 
-export function playPiece() {
-
+export function playPiece(row, column) {
+  return {
+    type: PLACE_PIECE,
+    payload: {row, column}
+  }
 }
