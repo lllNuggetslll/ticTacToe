@@ -16,12 +16,7 @@ export function giveNewBoard (req, res) {
 
 export function calculateBoard (req, res) {
   const piece = rules[game.currentPlayer]
-  const game = {
-    currentPlayer: 'player1',
-    board: [['x', 'x', 'x'],['d', ' ', 'o'],['x', 'x', 'x']],
-    piece: 'x',
-    winner: false
-  };
+  const game = req.body;
 
   if (gameOver(game.board)) res.status(200).send(makeBoard())
 

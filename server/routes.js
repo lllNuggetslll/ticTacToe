@@ -8,6 +8,6 @@ export default function routes(app) {
 
   app.route('/api/getboard')
     .get(giveNewBoard)
-    .put(calculateBoard);
+    .post(calculateBoard);
 
 }
