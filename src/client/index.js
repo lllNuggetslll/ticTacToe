@@ -12,7 +12,7 @@ import './app/styles/font-awesome/css/font-awesome.min.css'
 import './app/styles/rdash-ui/dist/css/rdash.min.css'
 
 // Containers
-
+import Board from './app/board/board'
 
 import reducers from './app/combinedReducers/combinedReducers'
 
@@ -27,9 +27,7 @@ const store = createStore(reducers, applyMiddleware(
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      {/* <Route path="/" component={Dash}/>
-      <Route path="/user" component={User}/>
-      <Route path="/widget" component={Widget}/> */}
+      <Route path="/" component={Board}/>
     </Router>
   </Provider>,
   document.getElementById('root')
