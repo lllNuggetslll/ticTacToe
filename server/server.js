@@ -3,9 +3,13 @@ import webpack from 'webpack'
 import express from 'express'
 import config from '../webpack.config'
 import router from './routes'
+import bodyParser from 'body-parser'
 
 const compiler = webpack(config);
 const app = express();
+
+app.use(bodyParser())
+
 router(app)
 
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -19,6 +23,8 @@ app.get('*', function(req, res) {
 });
 
 app.set('port', process.env.PORT || 3000);
+
+
 
 app.listen(app.get('port'), function(err) {
   if (err) {
