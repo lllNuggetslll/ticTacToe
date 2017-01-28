@@ -6,7 +6,7 @@ import rowDispenser from './rows'
 const table = (board, playPiece) => (
   <table className='table'>
     {board.map((row, rowIndex) => (
-      <tr>
+      <tr key={rowIndex}>
         {rowDispenser(row, rowIndex, playPiece)}
       </tr>
     ))}

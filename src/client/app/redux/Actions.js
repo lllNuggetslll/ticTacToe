@@ -16,7 +16,7 @@ export function getNewBoard() {
 }
 
 export function sendBoard(board) {
-  const request = axios.post(`${ROOT_URL}api/getboard`, board)
+  const request =axios.post(`${ROOT_URL}api/sendboard`, board)
 
   return {
     type: SEND_BOARD,

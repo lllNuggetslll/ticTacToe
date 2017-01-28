@@ -16,7 +16,7 @@ class Board extends Component {
   }
 
   render () {
-    const { playPiece } = this.props
+    const { playPiece, getNewBoard } = this.props
     const {
       board,
       currentPlayer,
@@ -24,18 +24,18 @@ class Board extends Component {
       winner
     } = this.props.game
 
-      console.log(this.props.game)
-
       if (winner) {
         return (
           <div>
-            {winner}
+            <h1>{currentPlayer} wins!</h1>
+            <button onClick={getNewBoard}>Play again?</button>
           </div>
         )
       } else {
         return (
           <div>
             <h1>Tic Tac Toe</h1>
+            <h2>{currentPlayer}'s Turn => {piece}</h2>
             {table(board, playPiece)}
           </div>
         )
