@@ -11,14 +11,14 @@ import {
 
 export function giveNewBoard (req, res) {
     // const n = req.params.n
-    res.status(418).send(makeBoard())
+    res.status(200).send(makeBoard())
   }
 
 export function calculateBoard (req, res) {
   const game = req.body;
   const piece = rules[game.currentPlayer]
 
-  if (gameOver(game.board)) res.status(418).send(makeBoard())
+  if (gameOver(game.board)) res.status(200).send(makeBoard())
 
   if (
     !checkRows(game.board, piece) &&
@@ -26,9 +26,9 @@ export function calculateBoard (req, res) {
     !checkDiagonalLeft(game.board, piece) &&
     !checkDiagonalRight(game.board, piece)
   ) {
-    res.status(418).send(changePlayer(game))
+    res.status(200).send(changePlayer(game))
   } else {
     game.winner = true
-    res.status(418).send(game)
+    res.status(200).send(game)
   }
 }
